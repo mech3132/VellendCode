@@ -110,9 +110,9 @@ title(main="Assymetric selection, m = 1")
 
 ![](Online_box_5_dispersalbehaviour_files/figure-markdown_github/onlinebox5_extension-1.png)
 
-What we see is that as *m* increases, species 2 never goes extinct! This is because as *m* increases to 1, the loop enters the "local" selection process fewer and fewer times. When *m* = 1, the code only draws from the metacommunity and all assymetric (or symmetric, for that matter) selective advantages between patches is never taken into account during the calculation of *P**r*.1.
+What we see is that as *m* increases, species 2 never goes extinct! This is because as *m* increases to 1, the loop enters the "local" selection process fewer and fewer times. When *m* = 1, the code only draws from the metacommunity and all assymetric (or symmetric, for that matter) selective advantages between patches is never taken into account during the calculation of *Pr*.1.
 
-This means is we must be careful about how sampling from the metacommunity occurs. The current code models metacommunity sampling as drift-like process. In order to fix this, we must incorporate fitness differences into the calculation of *P**r*.1 in the metacommunity sampling loop (when runif(1)&lt;m).
+This means is we must be careful about how sampling from the metacommunity occurs. The current code models metacommunity sampling as drift-like process. In order to fix this, we must incorporate fitness differences into the calculation of *Pr*.1 in the metacommunity sampling loop (when runif(1)&lt;m).
 
 ### How to code for selection when sampling from the metacommunity
 
