@@ -123,7 +123,8 @@ However, when we draw recruits from the metacommunity, the location where reprod
 #### Scenario one: Reproduction occurs before dispersal
 
 If reproduction occurs before dispersal, then new recruit contributions from the metacommunity must be weighted within each patch to account for patch-level fitness differences. I'll call this the "reproduction-first model". If there are two patches with fitness ratios of *α*<sub>1</sub><sup>1</sup> and *α*<sub>1</sub><sup>2</sup> in patches 1 and 2, respectively, then draws from the metacommunity should be calculated as follows, where subscripts refer to species (*f*<sub>1</sub> is the frequency of species 1) and superscripts refers to patch (*f*<sub>1</sub><sup>2</sup> is the frequency of species 1 in patch 2):
-$$P\_{1}^{1} = \\frac{\\alpha^{1}\*f\_{1}^{1}}  {\\alpha^{1}\*f\_{1}^{1} + f\_{2}^{1} }$$
+
+*P*<sub>1</sub><sup>1</sup> = \\frac{\\alpha^{1}\*f\_{1}^{1}}  {\\alpha^{1}\*f\_{1}^{1} + f\_{2}^{1} }
 $$P\_{1}^{2} = \\frac{\\alpha^{2}\*f\_{1}^{2}}  {\\alpha^{2}\*f\_{1}^{2} + f\_{2}^{2} }$$
 
 $$P\_1 = \\frac{P\_1^1\*J^1 + P\_1^2\*J^2}   {J^1 + J^2}$$
