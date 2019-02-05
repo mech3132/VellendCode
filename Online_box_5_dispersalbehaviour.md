@@ -123,9 +123,13 @@ However, when we draw recruits from the metacommunity, the location where reprod
 #### Scenario one: Reproduction occurs before dispersal
 
 If reproduction occurs before dispersal, then new recruit contributions from the metacommunity must be weighted within each patch to account for patch-level fitness differences. I'll call this the "reproduction-first model". If there are two patches with fitness ratios of ![\\alpha\_1^1](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_1%5E1 "\alpha_1^1") and ![\\alpha\_1^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha_1%5E2 "\alpha_1^2") in patches 1 and 2, respectively, then draws from the metacommunity should be calculated as follows, where subscripts refer to species (![f\_1](http://chart.apis.google.com/chart?cht=tx&chl=f_1 "f_1") is the frequency of species 1) and superscripts refers to patch (![f\_1^2](http://chart.apis.google.com/chart?cht=tx&chl=f_1%5E2 "f_1^2") is the frequency of species 1 in patch 2):
+
 ![P\_{1}^{1} = \\frac{\\alpha^{1}\*f\_{1}^{1}} {\\alpha^{1}\*f\_{1}^{1} + f\_{2}^{1} }](http://chart.apis.google.com/chart?cht=tx&chl=P_%7B1%7D%5E%7B1%7D%20%3D%20%5Cfrac%7B%5Calpha%5E%7B1%7D%2Af_%7B1%7D%5E%7B1%7D%7D%20%7B%5Calpha%5E%7B1%7D%2Af_%7B1%7D%5E%7B1%7D%20%2B%20f_%7B2%7D%5E%7B1%7D%20%7D "P_{1}^{1} = \frac{\alpha^{1}*f_{1}^{1}} {\alpha^{1}*f_{1}^{1} + f_{2}^{1} }")
+
 ![P\_{1}^{2} = \\frac{\\alpha^{2}\*f\_{1}^{2}} {\\alpha^{2}\*f\_{1}^{2} + f\_{2}^{2} }](http://chart.apis.google.com/chart?cht=tx&chl=P_%7B1%7D%5E%7B2%7D%20%3D%20%5Cfrac%7B%5Calpha%5E%7B2%7D%2Af_%7B1%7D%5E%7B2%7D%7D%20%7B%5Calpha%5E%7B2%7D%2Af_%7B1%7D%5E%7B2%7D%20%2B%20f_%7B2%7D%5E%7B2%7D%20%7D "P_{1}^{2} = \frac{\alpha^{2}*f_{1}^{2}} {\alpha^{2}*f_{1}^{2} + f_{2}^{2} }")
+
 ![P\_1 = \\frac{P\_1^1\*J^1 + P\_1^2\*J^2} {J^1 + J^2}](http://chart.apis.google.com/chart?cht=tx&chl=P_1%20%3D%20%5Cfrac%7BP_1%5E1%2AJ%5E1%20%2B%20P_1%5E2%2AJ%5E2%7D%20%7BJ%5E1%20%2B%20J%5E2%7D "P_1 = \frac{P_1^1*J^1 + P_1^2*J^2} {J^1 + J^2}")
+
 From this equation, we see that the probability of a successful new recruit being from species 1 is equal to its average frequency across all patches weighted by both population size and fitness differences within each patch. Note that in the code from online box 5 patches are not permitted to be different population sizes but I include this detail here since it is relevant for other online boxes (E.g. Online box 8). We can therefore edit the code from online box 5 as follows:
 
 ``` r
@@ -201,9 +205,13 @@ onlinebox5_reprod_first <- function(num.years=50, num.patch=10, J=100, init.1.pr
 #### Scenario two: Reproduction occurs after dispersal
 
 If reproduction occurs after dispersal, then new recruit contributions from the metacommunity will be subject to patch-level fitness differences in the recruiting patch. Let us call this the "dispersal-first model". For example, if dispersal occurs between two patches with fitness ratios of ![\\alpha^1](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha%5E1 "\alpha^1") and ![\\alpha^2](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha%5E2 "\alpha^2"), respectively, the probability of an individual from species 1 successfully establishing itself as the new recruit in patch one is calculated as follows (subscripts represent species, superscripts represent patch number, ![f](http://chart.apis.google.com/chart?cht=tx&chl=f "f") is frequency, ![J](http://chart.apis.google.com/chart?cht=tx&chl=J "J") is population size, and ![\\alpha](http://chart.apis.google.com/chart?cht=tx&chl=%5Calpha "\alpha") is the fitness ratio):
+
 ![f\_1 = \\frac{f\_1^1\*J^1 + f\_1^2\*J^2} {J^1 + J^2}](http://chart.apis.google.com/chart?cht=tx&chl=f_1%20%3D%20%5Cfrac%7Bf_1%5E1%2AJ%5E1%20%2B%20f_1%5E2%2AJ%5E2%7D%20%7BJ%5E1%20%2B%20J%5E2%7D "f_1 = \frac{f_1^1*J^1 + f_1^2*J^2} {J^1 + J^2}")
+
 ![f\_2 = J - f\_1](http://chart.apis.google.com/chart?cht=tx&chl=f_2%20%3D%20J%20-%20f_1 "f_2 = J - f_1")
+
 ![P\_1^1 = \\frac{\\alpha^1\*f\_1} {\\alpha^1\*f\_1 + f\_2}](http://chart.apis.google.com/chart?cht=tx&chl=P_1%5E1%20%3D%20%5Cfrac%7B%5Calpha%5E1%2Af_1%7D%20%7B%5Calpha%5E1%2Af_1%20%2B%20f_2%7D "P_1^1 = \frac{\alpha^1*f_1} {\alpha^1*f_1 + f_2}")
+
 Here, total species frequencies from the metacommunity is used to calculate ![Pr.1](http://chart.apis.google.com/chart?cht=tx&chl=Pr.1 "Pr.1"). Only the fitness ratio from the recruiting patch influences ![Pr.1](http://chart.apis.google.com/chart?cht=tx&chl=Pr.1 "Pr.1") because selection occurs after dispersal. The code from online box 5 can thus be altered as follows:
 
 ``` r
